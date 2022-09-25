@@ -1,19 +1,17 @@
-from django.test import TestCase    
-
+from django.test import TestCase
 
 class NatalTest(TestCase):
-    def setUp(self):
-        self.resp = self.client.get('/')
+ def setUp(self):
+    self.resp = self.client.get('/')
 
-    def test_200_response(self):
-        self.assertEqual(200, self.resp.status_code)
+ def test_200_response(self):
+    self.assertEqual(200, self.resp.status_code)
 
-    def test_texto(self):
-        self.assertContains(self.resp, 'natal')
-
-    def test_template_natal(self):
-        self.assertTemplateUsed(self.resp, 'natal.html')
-
+ def test_texto(self):
+    self.assertContains(self.resp, 'natal')
+    
+ def test_template_natal(self):
+   self.assertTemplateUsed(self.resp, 'natal.html')
 
 from core.models import FeriadoModel
 from datetime import datetime
@@ -28,8 +26,8 @@ class FeriadoModelTest(TestCase):
             dia=self.dia,
             mes=self.mes,
         )
-        self.cadastro.save()
-    
+        self.cadastro.save()  
+       
     def test_created(self):
         self.assertTrue(FeriadoModel.objects.exists())
 
